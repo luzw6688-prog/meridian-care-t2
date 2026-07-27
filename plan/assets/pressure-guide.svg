@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 760" role="img" aria-labelledby="title desc">
+  <title id="title">Gentle shoulder pressure illustration</title>
+  <desc id="desc">A matching warm editorial illustration showing a relaxed hand applying gentle pressure at the shoulder.</desc>
+  <rect width="640" height="760" fill="#fbebdc"/>
+  <path fill="#8fa68c" d="M-31 698c21-194 117-304 287-330 186-29 322 84 406 338v54H-31Z"/>
+  <path fill="#fffaf2" d="M248 97c48-38 132-32 175 18 44 50 46 139 5 193-20 27-46 44-75 52v59c-38 22-77 22-116 0v-72c-27-16-49-41-60-73-22-64 7-137 71-177Z"/>
+  <path fill="#6f8d6f" d="M191 182c15-88 116-144 195-105 66 32 91 104 71 165-26-53-61-89-106-106-33 38-88 64-165 79 0-11 2-22 5-33Z"/>
+  <path d="M237 347c31 18 69 24 113 13M236 418c40 27 79 27 117 0M238 382c-67 9-118 47-153 115M354 382c61 8 113 47 155 116" fill="none" stroke="#2e4d3a" stroke-linecap="round" stroke-width="4"/>
+  <g fill="#f1c7a5" stroke="#b97648" stroke-linejoin="round" stroke-width="3">
+    <path d="M467 334c-24 30-41 64-51 103l-10 42c-5 23-20 40-42 52l-56 30c-13 7-17 23-10 35 8 13 23 17 36 10l60-32c37-20 61-51 71-93l8-35c9-34 22-62 40-85 9-12 6-28-5-36-13-8-29-5-41 9Z"/>
+    <path d="M422 421c-35-9-65 11-76 45-8 25 0 51 18 68 22-13 36-30 42-55l10-42c1-5 3-11 6-16Z"/>
+  </g>
+  <circle cx="347" cy="505" r="31" fill="#dc9a67" opacity=".24"/>
+  <circle cx="347" cy="505" r="13" fill="#dc9a67"/>
+  <path d="M545 461c18 8 31 21 40 39M546 426c28 9 51 27 69 54" fill="none" stroke="#b97648" stroke-linecap="round" stroke-width="4"/>
+  <rect x="57" y="107" width="174" height="48" rx="24" fill="#fffdf8"/>
+  <text x="144" y="137" text-anchor="middle" fill="#3d6148" font-family="Arial, sans-serif" font-size="17" font-weight="700">Gentle pressure</text>
+  <path d="M90 579c35 22 60 56 74 102M489 116c23 24 37 52 42 85" fill="none" stroke="#d79768" stroke-linecap="round" stroke-width="3"/>
+</svg>

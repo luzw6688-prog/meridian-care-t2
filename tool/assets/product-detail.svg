@@ -1,0 +1,38 @@
+<svg width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paper" x1="130" y1="104" x2="445" y2="530" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFCF4"/>
+      <stop offset="1" stop-color="#E9E1D1"/>
+    </linearGradient>
+    <linearGradient id="tool" x1="393" y1="112" x2="474" y2="519" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C99054"/>
+      <stop offset=".48" stop-color="#9B5D2F"/>
+      <stop offset="1" stop-color="#6F3C22"/>
+    </linearGradient>
+    <filter id="s" x="52" y="58" width="522" height="530" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="19" stdDeviation="18" flood-color="#345444" flood-opacity=".17"/>
+    </filter>
+  </defs>
+  <rect width="640" height="640" fill="#DEE8DC"/>
+  <circle cx="94" cy="86" r="150" fill="#F1D5BD" fill-opacity=".64"/>
+  <g filter="url(#s)">
+    <g transform="rotate(-8 236 338)">
+      <rect x="92" y="128" width="280" height="392" rx="18" fill="url(#paper)"/>
+      <circle cx="232" cy="230" r="61" fill="#DDE8DC"/>
+      <path d="M255 184C202 188 181 218 187 260C226 257 255 228 255 184Z" stroke="#527363" stroke-width="4"/>
+      <path d="M190 275C203 236 222 216 249 197" stroke="#527363" stroke-width="4" stroke-linecap="round"/>
+      <text x="232" y="333" text-anchor="middle" fill="#244C3E" font-family="Arial, sans-serif" font-size="22" font-weight="700">QUICK START</text>
+      <text x="232" y="365" text-anchor="middle" fill="#63776D" font-family="Arial, sans-serif" font-size="13">GENTLE DAILY ROUTINES</text>
+      <path d="M143 421H321M158 445H306M177 469H287" stroke="#BCC8BC" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g transform="rotate(14 440 330)">
+      <path d="M407 149C411 190 404 266 410 359C414 422 423 474 432 500H448C457 474 466 422 470 359C476 266 469 190 473 149H407Z" fill="url(#tool)"/>
+      <ellipse cx="440" cy="132" rx="58" ry="49" fill="#A86A36"/>
+      <ellipse cx="440" cy="506" rx="24" ry="22" fill="#7A4325"/>
+      <path d="M414 130C422 102 447 92 466 112" stroke="#D7A66B" stroke-width="5" stroke-linecap="round" opacity=".62"/>
+      <path d="M423 171C418 258 421 377 433 466" stroke="#E6BE82" stroke-width="6" stroke-linecap="round" opacity=".42"/>
+      <path d="M450 168C458 257 455 365 447 455" stroke="#69391F" stroke-width="3" stroke-linecap="round" opacity=".38"/>
+      <path d="M427 221C439 229 450 228 463 218M421 319C435 328 451 327 465 315M431 414C440 420 451 419 460 411" stroke="#75401F" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+    </g>
+  </g>
+</svg>

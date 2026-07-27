@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Preview Meridian Care's proposed 7-day guided wellness plans and tell us which one you want."
+    />
+    <meta name="theme-color" content="#f7f1e7" />
+    <title>7-Day Guided Wellness Plans | Meridian Care</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/plan.css" />
+    <script type="module" src="./js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skip">Skip to main content</a>
+
+    <header class="brand-header">
+      <div class="shell brand-header__inner">
+        <a class="brand" href="../" aria-label="Meridian Care home">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 28c-1.1-8.5 1.5-15.1 8.2-20" />
+            <path d="M16.2 19.8c-5.2-.3-8.6-3.1-10.4-8.2 5.4-.3 9 2.3 10.8 7.7" />
+            <path d="M18.6 14.6c.6-4.7 3.2-7.6 7.7-8.8.1 4.5-2.3 7.6-7.2 9.2" />
+          </svg>
+          <span>Meridian Care</span>
+        </a>
+        <div class="header-actions">
+          <a class="back-link" href="../" aria-label="Back to Meridian Care" data-back-link>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m12.5 4.5-5 5.5 5 5.5" />
+            </svg>
+            <span data-i18n="back">Back to Meridian Care</span>
+          </a>
+          <div class="language-switch" role="group" aria-label="Language" data-language-switch>
+            <button type="button" data-language="en" aria-pressed="true">EN</button>
+            <button type="button" data-language="zh" aria-pressed="false">简中</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section-observe" data-section="hero" aria-labelledby="plan-title">
+        <div class="shell hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow" data-i18n="guidedRoutine">A guided wellness routine</p>
+            <h1 id="plan-title" data-plan-copy="name">7-Day Neck &amp; Shoulder Relaxation Plan</h1>
+            <p class="hero__lead" data-plan-copy="lead">Follow a simple 5-minute acupressure routine each day.</p>
+            <p class="hero__support" data-plan-copy="support">
+              A guided plan for building an easy neck and shoulder relaxation habit—no
+              previous acupressure experience required.
+            </p>
+
+            <ul class="plan-facts" aria-label="Plan highlights" data-plan-highlights>
+              <li>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3v3M15 3v3M3.5 8h13M5 4.5h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z" /></svg>
+                <span data-i18n="guidedDays">7 guided days</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10.5" r="7" /><path d="M10 6.5v4l2.7 1.7M7.5 2.5h5" /></svg>
+                <span data-i18n="minutesDay">5 minutes a day</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10.5 3.4 3.4L16 5.8" /></svg>
+                <span data-i18n="beginner">Beginner-friendly</span>
+              </li>
+            </ul>
+
+            <div class="plan-picker section-observe" data-section="plan_selector" aria-labelledby="plan-picker-title">
+              <div class="plan-picker__heading">
+                <p class="eyebrow" data-i18n="chooseEyebrow">Personalize your preview</p>
+                <h2 id="plan-picker-title" data-i18n="chooseTitle">Choose the plan that fits your routine</h2>
+                <p data-i18n="chooseSupport">Explore any of the three proposed seven-day plans.</p>
+              </div>
+              <fieldset class="plan-choice-grid" data-render="plan-selector">
+                <legend class="sr-only">Choose a wellness plan</legend>
+              </fieldset>
+            </div>
+
+            <div class="hero__conversion">
+              <div class="price-block" data-price-block>
+                <span data-i18n="plannedPrice">Planned price</span>
+                <div class="price-block__original">
+                  <span data-i18n="originalPrice">Original</span>
+                  <del data-original-price>$19.90</del>
+                </div>
+                <div class="price-block__presale">
+                  <span data-i18n="presalePrice">Pre-sale</span>
+                  <strong data-price aria-live="polite">$9.90</strong>
+                </div>
+              </div>
+              <button class="primary-cta" type="button" data-interest-cta="hero">
+                <span data-cta-label>I Want This Plan</span>
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11.5 5.5 16 10l-4.5 4.5" /></svg>
+              </button>
+              <p class="cta-note" data-i18n="noPayment">The massage plan is being prepared. Please stay tuned.</p>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Preview of an illustrated acupressure routine" data-visual-label>
+            <div class="hero-visual__wash" aria-hidden="true"></div>
+            <div class="phone-preview">
+              <div class="phone-preview__top">
+                <span data-i18n="dayOne">Day 1 / 7</span>
+                <span>5 min</span>
+              </div>
+              <div class="phone-preview__art">
+                <img
+                  src="./assets/acupoint-guide.svg"
+                  alt="Illustrated guide showing a gentle neck and shoulder acupressure point"
+                  width="640"
+                  height="760"
+                />
+                <span class="point-pulse" aria-hidden="true"></span>
+              </div>
+              <div class="phone-preview__caption">
+                <span data-i18n="todaysFocus">Today’s focus</span>
+                <strong data-plan-copy="visualFocus">A gentle start</strong>
+                <div class="preview-progress" aria-hidden="true"><span></span></div>
+              </div>
+            </div>
+            <span class="visual-note visual-note--top" data-i18n="illustratedLocation">Illustrated point location</span>
+            <span class="visual-note visual-note--bottom" data-i18n="steadyPressure">Gentle, steady pressure</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-observe" data-section="pain_points" aria-labelledby="pain-title">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="clearStart">A clearer place to begin</p>
+            <h2 id="pain-title" data-i18n="painTitle">A simple routine, without the guesswork</h2>
+          </div>
+          <div class="pain-grid" data-render="pain-points"></div>
+        </div>
+      </section>
+
+      <section class="section section--sage section-observe" data-section="benefits" aria-labelledby="benefits-title">
+        <div class="shell benefits-layout">
+          <div class="section-heading section-heading--sticky">
+            <p class="eyebrow" data-i18n="expectedInclude">What the plan is expected to include</p>
+            <h2 id="benefits-title" data-i18n="benefitsTitle">Everything you need to follow along</h2>
+            <p data-i18n="benefitsSupport">
+              We’re exploring a practical, guided format that makes each daily routine
+              easy to understand.
+            </p>
+          </div>
+          <div class="benefit-list" data-render="benefits"></div>
+        </div>
+      </section>
+
+      <section class="section section-observe" data-section="plan_overview" aria-labelledby="timeline-title" hidden aria-hidden="true">
+        <div class="shell">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow" data-i18n="rhythm">Seven days, one easy rhythm</p>
+            <h2 id="timeline-title" data-i18n="overviewTitle">Your plan at a glance</h2>
+            <p data-i18n="overviewSupport">A preview of the proposed plan structure. No lessons are open yet.</p>
+          </div>
+          <ol class="timeline" data-render="timeline"></ol>
+        </div>
+      </section>
+
+      <section
+        class="section section--preview section-observe"
+        data-section="day_1_preview"
+        data-preview-id="day_1"
+        aria-labelledby="preview-title"
+      >
+        <div class="shell">
+          <div class="preview-label" data-i18n="planPreview">Plan preview</div>
+          <article class="lesson-preview">
+            <div class="lesson-preview__header">
+              <div>
+                <div class="lesson-preview__day">
+                  <span data-i18n="dayOne">Day 1 / 7</span>
+                  <div
+                    class="day-progress"
+                    role="img"
+                    aria-label="Day 1 of 7. Days 2 through 7 are locked."
+                    data-day-progress
+                  >
+                    <span class="day-progress__step day-progress__step--active" aria-hidden="true"></span>
+                    <span class="day-progress__step day-progress__step--locked" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><rect x="4" y="7" width="8" height="6" rx="1.5" /><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" /></svg>
+                    </span>
+                    <span class="day-progress__step day-progress__step--locked" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><rect x="4" y="7" width="8" height="6" rx="1.5" /><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" /></svg>
+                    </span>
+                    <span class="day-progress__step day-progress__step--locked" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><rect x="4" y="7" width="8" height="6" rx="1.5" /><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" /></svg>
+                    </span>
+                    <span class="day-progress__step day-progress__step--locked" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><rect x="4" y="7" width="8" height="6" rx="1.5" /><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" /></svg>
+                    </span>
+                    <span class="day-progress__step day-progress__step--locked" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><rect x="4" y="7" width="8" height="6" rx="1.5" /><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" /></svg>
+                    </span>
+                    <span class="day-progress__step day-progress__step--locked" aria-hidden="true">
+                      <svg viewBox="0 0 16 16"><rect x="4" y="7" width="8" height="6" rx="1.5" /><path d="M5.5 7V5.5a2.5 2.5 0 0 1 5 0V7" /></svg>
+                    </span>
+                  </div>
+                </div>
+                <h2 id="preview-title" data-plan-copy="previewTitle">A gentle start for your neck and shoulders</h2>
+              </div>
+              <span class="focus-label" data-i18n="todaysFocus">Today’s focus</span>
+            </div>
+
+            <div class="lesson-preview__media">
+              <figure class="lesson-media lesson-media--formal">
+                <img
+                  src="./assets/figma-yintang-guidance.png"
+                  alt="Meridian Care illustration showing the Yintang acupoint between the eyebrows"
+                  width="398"
+                  height="398"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>01</span>
+                  <span data-i18n="findPoint">Find the point</span>
+                </figcaption>
+              </figure>
+              <figure class="lesson-media lesson-media--action">
+                <img
+                  src="./assets/yintang-gentle-pressure.gif"
+                  alt="Animation demonstrating gentle pressure on the Yintang acupoint"
+                  width="398"
+                  height="398"
+                  loading="lazy"
+                />
+                <span class="video-badge" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="m8 6 6 4-6 4Z" /></svg>
+                </span>
+                <figcaption>
+                  <span>02</span>
+                  <span data-i18n="applyPressure">Apply gentle pressure</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="lesson-preview__details">
+              <div class="lesson-instruction">
+                <span class="instruction-number">1</span>
+                <p data-plan-copy="previewInstruction">
+                  Locate the suggested point, relax your hand, and apply gentle, steady
+                  pressure for 60 seconds.
+                </p>
+              </div>
+              <div class="lesson-meta">
+                <span class="lesson-meta__acupoint">
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.5" /><circle cx="10" cy="10" r="2" /><path d="M10 1.8v2.1M10 16.1v2.1M1.8 10h2.1M16.1 10h2.1" /></svg>
+                  <span data-i18n="acupoint">Acupoint:</span>
+                  <strong data-i18n="yintang">Yintang (EX-HN3)</strong>
+                </span>
+                <span>
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" /><path d="M10 6v4l3 2" /></svg>
+                  <span data-i18n="duration">Suggested duration:</span> <strong data-i18n="seconds">60 seconds</strong>
+                </span>
+                <span>
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 16V9.4c0-.8.6-1.4 1.4-1.4.5 0 .9.2 1.2.6V6.8c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.1c.2-.5.7-.8 1.3-.8.8 0 1.4.6 1.4 1.4v3.1c0 3-1.8 5.4-4.7 5.4H9c-1.1 0-2-.3-2.5-1Z" /></svg>
+                  <strong data-i18n="gentlePressure">Gentle pressure</strong>
+                </span>
+              </div>
+            </div>
+          </article>
+          <p class="preview-disclaimer" data-i18n="previewDisclaimer">
+            This plan preview is a demonstration only and does not represent the massage plan’s final content or presentation.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-observe" data-section="audience" aria-labelledby="audience-title">
+        <div class="shell audience-layout">
+          <figure class="audience-visual">
+            <img
+              src="./assets/everyday-acupressure.webp"
+              alt="A person practicing a gentle neck and shoulder self-massage"
+              width="1280"
+              height="800"
+              loading="lazy"
+              data-audience-image
+            />
+          </figure>
+          <div>
+            <div class="section-heading">
+              <p class="eyebrow" data-i18n="everydayWellness">Designed for everyday wellness</p>
+              <h2 id="audience-title" data-i18n="audienceTitle">This plan may be a good fit for</h2>
+            </div>
+            <ul class="audience-list" data-render="audience"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--peach section-observe" data-section="how_it_works" aria-labelledby="works-title">
+        <div class="shell">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow" data-i18n="expectedWork">How it’s expected to work</p>
+            <h2 id="works-title" data-i18n="worksTitle">Five mindful minutes, step by step</h2>
+          </div>
+          <ol class="steps" data-render="steps"></ol>
+        </div>
+      </section>
+
+      <section class="section section--safety section-observe" data-section="safety" aria-labelledby="safety-title">
+        <div class="shell">
+          <aside class="safety-notice">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 4.5 6v5.6c0 4.4 3 7.8 7.5 9.4 4.5-1.6 7.5-5 7.5-9.4V6L12 3Z" />
+              <path d="M12 8v4.5M12 16h.01" />
+            </svg>
+            <div>
+              <h2 id="safety-title" data-i18n="safetyTitle">A gentle note on safety</h2>
+              <p data-i18n="safety">
+                This plan is intended for general relaxation and wellness education. It
+                does not replace medical diagnosis or treatment. Stop if you experience
+                pain, numbness, dizziness, or unusual discomfort, and consult a qualified
+                professional when needed.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="bottom-conversion section-observe" data-section="bottom_conversion" aria-labelledby="bottom-title">
+        <div class="shell bottom-conversion__inner">
+          <div class="bottom-conversion__copy">
+            <p class="eyebrow" data-i18n="shapeNext">Five minutes for yourself each day</p>
+            <h2 id="bottom-title" data-plan-copy="name">7-Day Neck &amp; Shoulder Relaxation Plan</h2>
+          </div>
+          <div class="bottom-conversion__action">
+            <div class="price-block price-block--light" data-price-block>
+              <span data-i18n="plannedPrice">Planned price</span>
+              <div class="price-block__original">
+                <span data-i18n="originalPrice">Original</span>
+                <del data-original-price>$19.90</del>
+              </div>
+              <div class="price-block__presale">
+                <span data-i18n="presalePrice">Pre-sale</span>
+                <strong data-price>$9.90</strong>
+              </div>
+            </div>
+            <button class="primary-cta primary-cta--cream" type="button" data-interest-cta="bottom">
+              <span data-cta-label>I Want This Plan</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11.5 5.5 16 10l-4.5 4.5" /></svg>
+            </button>
+            <p class="cta-note cta-note--light" data-i18n="noPayment">
+              The massage plan is being prepared. Please stay tuned.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell site-footer__inner">
+        <a class="brand brand--footer" href="../">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 28c-1.1-8.5 1.5-15.1 8.2-20" />
+            <path d="M16.2 19.8c-5.2-.3-8.6-3.1-10.4-8.2 5.4-.3 9 2.3 10.8 7.7" />
+            <path d="M18.6 14.6c.6-4.7 3.2-7.6 7.7-8.8.1 4.5-2.3 7.6-7.2 9.2" />
+          </svg>
+          <span>Meridian Care</span>
+        </a>
+        <p data-i18n="footer">Wellness guidance for a calmer daily routine.</p>
+      </div>
+    </footer>
+
+    <div class="sticky-cta" data-sticky-cta aria-hidden="true" inert>
+      <div class="sticky-cta__price">
+        <span data-i18n="presalePrice">Pre-sale</span>
+        <div>
+          <del data-original-price>$19.90</del>
+          <strong data-price>$9.90</strong>
+        </div>
+      </div>
+      <button class="primary-cta primary-cta--sticky" type="button" data-interest-cta="sticky">
+        <span data-cta-label>I Want This Plan</span>
+      </button>
+    </div>
+
+    <div
+      class="interest-dialog"
+      data-interest-dialog
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-description"
+      hidden
+    >
+      <button class="interest-dialog__scrim" type="button" data-dialog-close aria-label="Close dialog"></button>
+      <div class="interest-dialog__panel" role="document">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <button class="dialog-close" type="button" data-dialog-close aria-label="Close">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg>
+        </button>
+        <span class="dialog-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="m6 12.5 4 4L18 8" /></svg>
+        </span>
+        <h2 id="dialog-title" data-i18n="thanks">Thanks for your interest!</h2>
+        <p id="dialog-description" data-i18n="dialog">
+          We’re preparing this guided plan. Your response helps us decide what to launch
+          next.
+        </p>
+        <form class="interest-form" data-interest-form novalidate>
+          <label for="interest-email" data-i18n="emailLabel">Email address (optional)</label>
+          <input
+            id="interest-email"
+            name="email"
+            type="email"
+            inputmode="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            data-interest-email
+            aria-describedby="interest-email-helper interest-email-error"
+          />
+          <p id="interest-email-helper" class="interest-form__helper" data-i18n="emailHelper">
+            When the massage plan launches, we’ll notify you first at the email address you provide.
+          </p>
+          <p
+            id="interest-email-error"
+            class="interest-form__error"
+            data-i18n="emailError"
+            data-email-error
+            role="alert"
+            hidden
+          >
+            Enter a valid email address or leave this field blank.
+          </p>
+          <button class="primary-cta primary-cta--dialog" type="submit" data-dialog-got-it>
+            <span data-i18n="gotIt">Got It</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="sr-only" aria-live="polite" data-status-announcer></div>
+  </body>
+</html>
