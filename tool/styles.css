@@ -39,7 +39,7 @@ html {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 0;
   min-height: 100dvh;
   overflow-x: hidden;
   background:
@@ -116,6 +116,28 @@ p {
   text-wrap: pretty;
 }
 
+main,
+header,
+footer,
+section,
+article,
+div,
+figure,
+dl {
+  min-width: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+dt,
+dd,
+button,
+a {
+  overflow-wrap: break-word;
+}
+
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 4px;
@@ -150,6 +172,7 @@ p {
   align-items: center;
   justify-content: space-between;
   min-height: 68px;
+  padding-block: 8px;
   border-bottom: 1px solid var(--color-line);
 }
 
@@ -161,14 +184,20 @@ p {
 }
 
 .brand-lockup {
+  min-width: 0;
   gap: 9px;
   font-size: 15px;
   font-weight: 750;
   letter-spacing: -0.01em;
 }
 
+.brand-lockup > span:last-child {
+  white-space: nowrap;
+}
+
 .brand-symbol {
   display: grid;
+  flex: 0 0 auto;
   width: 34px;
   height: 34px;
   place-items: center;
@@ -191,6 +220,7 @@ p {
 
 .header-actions {
   display: flex;
+  flex: 0 0 auto;
   gap: 8px;
   align-items: center;
 }
@@ -341,12 +371,15 @@ p {
 
 .price-block {
   display: grid;
+  min-width: 0;
   gap: 3px;
 }
 
 .price-original,
 .price-current {
   display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
   gap: 7px;
   align-items: baseline;
 }
@@ -380,13 +413,19 @@ p {
 
 .button {
   display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
   min-height: 50px;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 0 22px;
+  padding: 10px 22px;
   border-radius: var(--radius-sm);
   font-weight: 780;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
   transition:
     transform 180ms var(--ease-out),
     background-color 180ms ease,
@@ -442,6 +481,7 @@ p {
 
 .trust-list {
   display: flex;
+  flex-wrap: wrap;
   grid-area: trust;
   gap: 10px 18px;
   align-items: center;
@@ -729,6 +769,7 @@ p {
 .detail-list dd {
   font-size: 15px;
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .safety-notice {
@@ -818,6 +859,8 @@ p {
 
 .site-footer {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
   min-height: 76px;
   align-items: center;
   justify-content: space-between;
@@ -832,7 +875,7 @@ p {
   bottom: calc(10px + env(safe-area-inset-bottom));
   left: 12px;
   display: none;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: minmax(68px, auto) minmax(0, 1fr);
   gap: 12px;
   align-items: center;
   padding: 10px;
@@ -872,6 +915,7 @@ p {
 
 .button-compact {
   min-height: 46px;
+  padding-inline: 14px;
 }
 
 .modal-layer {
@@ -1234,6 +1278,10 @@ p {
 }
 
 @media (max-width: 374px) {
+  :root {
+    --space-page: 16px;
+  }
+
   .brand-lockup {
     font-size: 13px;
   }
@@ -1248,17 +1296,176 @@ p {
   }
 
   .language-switch select {
-    width: 88px;
-    padding-right: 4px;
+    width: 84px;
+    padding-right: 3px;
+    padding-left: 29px;
     font-size: 11px;
   }
 
-  .hero-conversion {
-    grid-template-columns: 82px 1fr;
+  .language-switch > svg {
+    left: 8px;
+    width: 16px;
+  }
+
+  .hero {
+    padding-top: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 11.5vw, 42px);
+    line-height: 1;
+  }
+
+  .hero-conversion,
+  .bottom-action {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .hero-conversion .button,
+  .bottom-action .button {
+    width: 100%;
+  }
+
+  .hero-conversion .cta-helper,
+  .bottom-action .cta-helper {
+    text-align: left;
   }
 
   .trust-list {
+    gap: 10px 14px;
+  }
+
+  .content-section,
+  .benefit-section {
+    padding-block: 64px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(30px, 9.5vw, 38px);
+  }
+
+  .pain-card {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+    padding-inline: 16px;
+  }
+
+  .pain-card .line-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .detail-list > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .bottom-conversion {
+    padding-block: 60px;
+  }
+
+  .bottom-conversion h2 {
+    font-size: clamp(34px, 11vw, 42px);
+  }
+
+  .site-footer {
+    align-content: center;
+    justify-content: flex-start;
+    padding-block: 16px;
+  }
+
+  .site-footer span {
+    flex: 1 1 100%;
+  }
+
+  .sticky-cta {
+    right: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    left: 8px;
+    grid-template-columns: minmax(64px, 74px) minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+
+  body.has-sticky-cta {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+
+  .sticky-price {
+    min-width: 0;
+    padding-left: 2px;
+  }
+
+  .button-compact {
+    padding-inline: 10px;
+    font-size: 13px;
+  }
+
+  .interest-modal {
+    padding: 28px 18px calc(20px + env(safe-area-inset-bottom));
+  }
+
+  .modal-close {
+    top: 8px;
+    right: 8px;
+  }
+
+  .modal-symbol {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 18px;
+  }
+
+  .interest-modal h2 {
+    padding-right: 44px;
+    font-size: 30px;
+  }
+
+  .interest-form {
+    margin-top: 18px;
+  }
+
+  .modal-confirm {
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 319px) {
+  :root {
+    --space-page: 12px;
+  }
+
+  .brand-header {
     flex-wrap: wrap;
+    padding-block: 10px;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .visual-note {
+    max-width: calc(100% - 20px);
+    white-space: normal;
+  }
+
+  .pain-card,
+  .safety-notice {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sticky-price span {
+    font-size: 8px;
+  }
+
+  .sticky-price strong {
+    font-size: 18px;
   }
 }
 
