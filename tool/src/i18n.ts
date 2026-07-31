@@ -1,7 +1,5 @@
 export type Language = "en" | "zh-CN";
 
-const LANGUAGE_STORAGE_KEY = "meridianCare.tool.language.v1";
-
 const messages = {
   en: {
     "page.title": "Acupressure Massage Stick | Meridian Care",
@@ -180,24 +178,14 @@ const messages = {
 
 export type MessageKey = keyof (typeof messages)["en"];
 
-const isLanguage = (value: string | null): value is Language =>
-  value === "en" || value === "zh-CN";
-
-let currentLanguage: Language = isLanguage(localStorage.getItem(LANGUAGE_STORAGE_KEY))
-  ? (localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language)
-  : "en";
+let currentLanguage: Language = "en";
 
 export function t(key: MessageKey): string {
   return messages[currentLanguage][key];
 }
 
-export function getCurrentLanguage(): Language {
-  return currentLanguage;
-}
-
-export function applyLanguage(language: Language, persist = true): void {
+export function applyLanguage(language: Language): void {
   currentLanguage = language;
-  if (persist) localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   document.documentElement.lang = language;
   document.title = t("page.title");
   document
@@ -217,6 +205,4 @@ export function applyLanguage(language: Language, persist = true): void {
     if (key) element.setAttribute("aria-label", t(key));
   });
 
-  const select = document.querySelector<HTMLSelectElement>("[data-language-select]");
-  if (select) select.value = language;
 }
