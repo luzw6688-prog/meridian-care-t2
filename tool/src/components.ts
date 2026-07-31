@@ -152,23 +152,6 @@ export function renderPage(price: PriceOption, complete: boolean): string {
         <span class="brand-symbol" aria-hidden="true">${icon("leaf")}</span>
         <span>Meridian Care</span>
       </a>
-      <div class="header-actions">
-        <a class="back-link" href="../">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
-          <span data-i18n="nav.back">Back to Meridian Care</span>
-        </a>
-        <label class="language-switch">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"></circle>
-            <path d="M3.5 12h17M12 3c2.2 2.5 3.3 5.5 3.3 9S14.2 18.5 12 21M12 3C9.8 5.5 8.7 8.5 8.7 12s1.1 6.5 3.3 9"></path>
-          </svg>
-          <span class="sr-only" data-i18n="nav.language">Language</span>
-          <select aria-label="Language" data-language-select data-i18n-aria-label="nav.language">
-            <option value="en">English</option>
-            <option value="zh-CN">简体中文</option>
-          </select>
-        </label>
-      </div>
     </header>
 
     <main id="main-content">
