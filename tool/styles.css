@@ -176,8 +176,7 @@ a {
   border-bottom: 1px solid var(--color-line);
 }
 
-.brand-lockup,
-.back-link {
+.brand-lockup {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
@@ -208,74 +207,6 @@ a {
 
 .brand-symbol svg {
   width: 20px;
-}
-
-.back-link {
-  gap: 5px;
-  min-height: 44px;
-  font-size: 13px;
-  font-weight: 650;
-  color: var(--color-ink-soft);
-}
-
-.header-actions {
-  display: flex;
-  flex: 0 0 auto;
-  gap: 8px;
-  align-items: center;
-}
-
-.back-link:hover {
-  color: var(--color-green-deep);
-}
-
-.back-link svg {
-  width: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.8;
-}
-
-.language-switch {
-  position: relative;
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  color: var(--color-ink-soft);
-}
-
-.language-switch > svg {
-  position: absolute;
-  z-index: 1;
-  left: 10px;
-  width: 17px;
-  pointer-events: none;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
-}
-
-.language-switch select {
-  width: 112px;
-  min-height: 44px;
-  padding: 0 8px 0 33px;
-  border: 1px solid var(--color-line);
-  border-radius: 10px;
-  background: rgba(255, 253, 248, 0.72);
-  color: var(--color-ink);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.language-switch select:hover {
-  border-color: rgba(65, 108, 89, 0.38);
-  background: var(--color-surface);
 }
 
 .hero {
@@ -1135,27 +1066,9 @@ a {
 }
 
 @media (max-width: 559px) {
-  .brand-header {
-    gap: 8px;
-  }
-
   .brand-lockup {
     gap: 7px;
     font-size: 14px;
-  }
-
-  .back-link {
-    width: 44px;
-    justify-content: center;
-  }
-
-  .back-link span {
-    display: none;
-  }
-
-  .language-switch select {
-    width: 96px;
-    padding-left: 31px;
   }
 }
 
@@ -1291,22 +1204,6 @@ a {
     height: 32px;
   }
 
-  .header-actions {
-    gap: 4px;
-  }
-
-  .language-switch select {
-    width: 84px;
-    padding-right: 3px;
-    padding-left: 29px;
-    font-size: 11px;
-  }
-
-  .language-switch > svg {
-    left: 8px;
-    width: 16px;
-  }
-
   .hero {
     padding-top: 22px;
   }
@@ -1435,15 +1332,6 @@ a {
 @media (max-width: 319px) {
   :root {
     --space-page: 12px;
-  }
-
-  .brand-header {
-    flex-wrap: wrap;
-    padding-block: 10px;
-  }
-
-  .header-actions {
-    margin-left: auto;
   }
 
   .hero h1 {
