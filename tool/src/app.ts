@@ -1,13 +1,7 @@
 import { hasRecordedInterest, resolvePriceVariant, saveRecordedInterest } from "./ab-test";
 import { AnalyticsService } from "./analytics";
 import { renderPage } from "./components";
-import {
-  applyLanguage,
-  getCurrentLanguage,
-  t,
-  type Language,
-  type MessageKey
-} from "./i18n";
+import { applyLanguage, t, type MessageKey } from "./i18n";
 import { saveNotificationEmail } from "./notification-email";
 import { resolveAttribution } from "./utm";
 
@@ -30,9 +24,8 @@ const liveRegion = document.querySelector<HTMLElement>("[data-cta-live]")!;
 const stickyCta = document.querySelector<HTMLElement>("[data-sticky-cta]")!;
 const heroCta = document.querySelector<HTMLButtonElement>('[data-cta-location="hero"]')!;
 const bottomConversion = document.querySelector<HTMLElement>("[data-bottom-conversion]")!;
-const languageSelect = document.querySelector<HTMLSelectElement>("[data-language-select]")!;
 
-applyLanguage(getCurrentLanguage(), false);
+applyLanguage("en");
 
 const pageViewKey = `meridianCare.tool.pageView.v1:${price.variant}`;
 if (!sessionStorage.getItem(pageViewKey)) {
@@ -116,14 +109,6 @@ document.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
   const button = target.closest<HTMLButtonElement>("[data-interest-cta]");
   if (button) void recordInterest(button);
-});
-
-languageSelect.addEventListener("change", () => {
-  const language = languageSelect.value;
-  if (language === "en" || language === "zh-CN") {
-    applyLanguage(language as Language);
-    liveRegion.textContent = "";
-  }
 });
 
 interestForm.addEventListener("submit", (event) => {
