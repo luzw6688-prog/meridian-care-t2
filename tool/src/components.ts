@@ -2,11 +2,12 @@ import { PRODUCT, type PriceOption } from "./config";
 import type { MessageKey } from "./i18n";
 
 const ASSETS = {
-  productMain: new URL("./assets/product-main-wood.jpg", location.href).href,
-  productDetail: new URL("./assets/product-quick-start-real.jpg", location.href).href,
-  stepFind: new URL("./assets/step-find-real.jpg", location.href).href,
-  stepPressure: new URL("./assets/step-pressure-real.jpg", location.href).href,
-  stepRoutine: new URL("./assets/step-routine-real.jpg", location.href).href
+  productMainWood: new URL("./assets/product-main-wood.jpg", location.href).href,
+  productMainMetal: new URL("./assets/product-main-metal.jpg", location.href).href,
+  productDetail: new URL("./assets/product-quick-start-metal.jpg", location.href).href,
+  stepFind: new URL("./assets/step-find-metal.jpg", location.href).href,
+  stepPressure: new URL("./assets/step-pressure-metal.jpg", location.href).href,
+  stepRoutine: new URL("./assets/step-routine-metal.jpg", location.href).href
 } as const;
 
 const icon = (name: "finger" | "pressure" | "guide" | "leaf" | "check"): string => {
@@ -60,6 +61,62 @@ function PriceBlock(price: PriceOption, className = ""): string {
         <strong data-display-price>${price.price}</strong>
       </div>
     </div>
+  `;
+}
+
+function ProductCarousel(): string {
+  return `
+    <figure
+      class="hero-visual product-carousel"
+      data-product-carousel
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Wood and metal product finishes"
+      data-i18n-aria-label="visual.carouselLabel"
+    >
+      <span class="visual-note" data-i18n="visual.concept">Product reference renderings</span>
+      <div class="carousel-stage">
+        <div class="carousel-slide is-active" data-carousel-slide aria-hidden="false">
+          <img
+            src="${ASSETS.productMainWood}"
+            width="1549"
+            height="1015"
+            alt="Natural sandalwood Acupressure Massage Stick with rounded ends"
+            data-i18n-alt="visual.woodAlt"
+          />
+          <span class="finish-label" data-i18n="visual.woodFinish">Natural sandalwood</span>
+        </div>
+        <div class="carousel-slide" data-carousel-slide aria-hidden="true">
+          <img
+            src="${ASSETS.productMainMetal}"
+            width="1551"
+            height="1014"
+            alt="Champagne-gold satin metal Acupressure Massage Stick with rounded ends"
+            data-i18n-alt="visual.metalAlt"
+          />
+          <span class="finish-label" data-i18n="visual.metalFinish">Champagne metal</span>
+        </div>
+      </div>
+      <div class="carousel-controls" aria-label="Choose a product finish" data-i18n-aria-label="visual.controlsLabel">
+        <button
+          class="carousel-dot is-active"
+          type="button"
+          data-carousel-go-to="0"
+          aria-pressed="true"
+          aria-label="Show natural sandalwood finish"
+          data-i18n-aria-label="visual.showWood"
+        ><span></span></button>
+        <button
+          class="carousel-dot"
+          type="button"
+          data-carousel-go-to="1"
+          aria-pressed="false"
+          aria-label="Show champagne metal finish"
+          data-i18n-aria-label="visual.showMetal"
+        ><span></span></button>
+      </div>
+      <span class="sr-only" aria-live="polite" data-carousel-live></span>
+    </figure>
   `;
 }
 
@@ -118,7 +175,7 @@ const steps = [
     altKey: "steps.1.alt" as const,
     title: "Find the suggested point",
     image: ASSETS.stepFind,
-    alt: "Photo of positioning the wooden massage stick near the shoulder"
+    alt: "Photo of positioning the champagne-gold metal massage stick near the shoulder"
   },
   {
     number: "2",
@@ -126,7 +183,7 @@ const steps = [
     altKey: "steps.2.alt" as const,
     title: "Apply gentle pressure",
     image: ASSETS.stepPressure,
-    alt: "Photo of applying gentle pressure to the palm with the wooden massage stick"
+    alt: "Photo of applying gentle pressure to the palm with the champagne-gold metal massage stick"
   },
   {
     number: "3",
@@ -134,16 +191,38 @@ const steps = [
     altKey: "steps.3.alt" as const,
     title: "Follow the guided routine",
     image: ASSETS.stepRoutine,
-    alt: "Photo of the wooden massage stick beside a guided routine on a phone"
+    alt: "Photo of the champagne-gold metal massage stick beside a guided routine on a phone"
   }
 ];
 
 const details = [
-  ["details.material", "Material", "details.materialValue", "Smoothly polished natural sandalwood"],
+  [
+    "details.material",
+    "Material",
+    "details.materialValue",
+    "Natural sandalwood or champagne-gold anodized aluminum alloy"
+  ],
   ["details.size", "Size", "details.sizeValue", "4.7 in (12 cm), compact and portable"],
   ["details.package", "Package", "details.packageValue", "Massage stick and quick-start guide"],
   ["details.care", "Care", "details.careValue", "Wipe clean and keep dry after use"]
 ] satisfies Array<[MessageKey, string, MessageKey, string]>;
+
+const materialOptions = [
+  {
+    className: "material-swatch-wood",
+    titleKey: "details.woodTitle" as const,
+    copyKey: "details.woodCopy" as const,
+    title: "Natural Sandalwood",
+    copy: "A warm, smoothly polished wood finish with natural grain variation."
+  },
+  {
+    className: "material-swatch-metal",
+    titleKey: "details.metalTitle" as const,
+    copyKey: "details.metalCopy" as const,
+    title: "Champagne Metal",
+    copy: "A satin anodized aluminum-alloy finish with a smooth, low-glare surface."
+  }
+];
 
 export function renderPage(price: PriceOption, complete: boolean): string {
   return `
@@ -163,16 +242,7 @@ export function renderPage(price: PriceOption, complete: boolean): string {
           <p class="hero-support" data-i18n="product.support">${PRODUCT.supportingCopy}</p>
         </div>
 
-        <figure class="hero-visual">
-          <span class="visual-note" data-i18n="visual.concept">Product reference rendering</span>
-          <img
-            src="${ASSETS.productMain}"
-            width="1549"
-            height="1015"
-            alt="Natural wood Acupressure Massage Stick with rounded ends"
-            data-i18n-alt="visual.productAlt"
-          />
-        </figure>
+        ${ProductCarousel()}
 
         <div class="hero-conversion">
           ${PriceBlock(price, "price-block-hero")}
@@ -264,7 +334,7 @@ export function renderPage(price: PriceOption, complete: boolean): string {
             width="640"
             height="640"
             loading="lazy"
-            alt="Wooden massage stick beside a cream quick-start guide"
+            alt="Champagne-gold metal massage stick beside a cream quick-start guide"
             data-i18n-alt="details.visualAlt"
           />
         </div>
@@ -272,6 +342,21 @@ export function renderPage(price: PriceOption, complete: boolean): string {
           <div class="section-heading reveal">
             <p class="eyebrow" data-i18n="details.eyebrow">Product information</p>
             <h2 data-i18n="details.title">Simple by design.</h2>
+          </div>
+          <div class="material-options reveal" aria-label="Available material concepts" data-i18n-aria-label="details.materialsLabel">
+            ${materialOptions
+              .map(
+                (option) => `
+                  <article class="material-option">
+                    <span class="material-swatch ${option.className}" aria-hidden="true"></span>
+                    <div>
+                      <h3 data-i18n="${option.titleKey}">${option.title}</h3>
+                      <p data-i18n="${option.copyKey}">${option.copy}</p>
+                    </div>
+                  </article>
+                `
+              )
+              .join("")}
           </div>
           <dl class="detail-list reveal">
             ${details

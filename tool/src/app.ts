@@ -27,6 +27,95 @@ const bottomConversion = document.querySelector<HTMLElement>("[data-bottom-conve
 
 applyLanguage("en");
 
+const carousel = document.querySelector<HTMLElement>("[data-product-carousel]");
+if (carousel) {
+  const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"));
+  const controls = Array.from(
+    carousel.querySelectorAll<HTMLButtonElement>("[data-carousel-go-to]")
+  );
+  const carouselLive = carousel.querySelector<HTMLElement>("[data-carousel-live]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let activeSlide = 0;
+  let carouselTimer = 0;
+  let pointerPaused = false;
+  let focusPaused = false;
+
+  const stopCarousel = (): void => {
+    if (!carouselTimer) return;
+    window.clearInterval(carouselTimer);
+    carouselTimer = 0;
+  };
+
+  const showSlide = (index: number, announce = false): void => {
+    activeSlide = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeSlide;
+      slide.classList.toggle("is-active", isActive);
+      slide.setAttribute("aria-hidden", String(!isActive));
+    });
+    controls.forEach((control, controlIndex) => {
+      const isActive = controlIndex === activeSlide;
+      control.classList.toggle("is-active", isActive);
+      control.setAttribute("aria-pressed", String(isActive));
+    });
+    if (announce && carouselLive) {
+      carouselLive.textContent =
+        activeSlide === 0 ? t("visual.woodFinish") : t("visual.metalFinish");
+    }
+  };
+
+  const startCarousel = (): void => {
+    stopCarousel();
+    if (
+      reduceMotion.matches ||
+      pointerPaused ||
+      focusPaused ||
+      document.visibilityState !== "visible" ||
+      slides.length < 2
+    ) {
+      return;
+    }
+    carouselTimer = window.setInterval(() => showSlide(activeSlide + 1), 4800);
+  };
+
+  controls.forEach((control) => {
+    control.addEventListener("click", () => {
+      const index = Number(control.dataset.carouselGoTo);
+      if (!Number.isNaN(index)) showSlide(index, true);
+      startCarousel();
+    });
+  });
+
+  carousel.addEventListener("mouseenter", () => {
+    pointerPaused = true;
+    stopCarousel();
+  });
+  carousel.addEventListener("mouseleave", () => {
+    pointerPaused = false;
+    startCarousel();
+  });
+  carousel.addEventListener("focusin", () => {
+    focusPaused = true;
+    stopCarousel();
+  });
+  carousel.addEventListener("focusout", (event) => {
+    if (carousel.contains(event.relatedTarget as Node | null)) return;
+    focusPaused = false;
+    startCarousel();
+  });
+  carousel.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    showSlide(activeSlide + (event.key === "ArrowRight" ? 1 : -1), true);
+    controls[activeSlide]?.focus();
+  });
+  document.addEventListener("visibilitychange", startCarousel);
+  reduceMotion.addEventListener("change", startCarousel);
+
+  showSlide(0);
+  startCarousel();
+}
+
 const pageViewKey = `meridianCare.tool.pageView.v1:${price.variant}`;
 if (!sessionStorage.getItem(pageViewKey)) {
   analytics.track("massage_tool_page_view");
