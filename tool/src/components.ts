@@ -4,7 +4,6 @@ import type { MessageKey } from "./i18n";
 const ASSETS = {
   productMainWood: new URL("./assets/product-main-wood.jpg", location.href).href,
   productMainMetal: new URL("./assets/product-main-metal.jpg", location.href).href,
-  productDetail: new URL("./assets/product-quick-start-metal.jpg", location.href).href,
   stepFind: new URL("./assets/step-find-metal.jpg", location.href).href,
   stepPressure: new URL("./assets/step-pressure-metal.jpg", location.href).href,
   stepRoutine: new URL("./assets/step-routine-metal.jpg", location.href).href
@@ -209,18 +208,28 @@ const details = [
 
 const materialOptions = [
   {
+    id: "wood",
     className: "material-swatch-wood",
     titleKey: "details.woodTitle" as const,
     copyKey: "details.woodCopy" as const,
+    altKey: "details.woodVisualAlt" as const,
+    selectedKey: "details.woodSelected" as const,
     title: "Natural Sandalwood",
-    copy: "A warm, smoothly polished wood finish with natural grain variation."
+    copy: "A warm, smoothly polished wood finish with natural grain variation.",
+    image: ASSETS.productMainWood,
+    alt: "Natural sandalwood Acupressure Massage Stick on a warm neutral surface"
   },
   {
+    id: "metal",
     className: "material-swatch-metal",
     titleKey: "details.metalTitle" as const,
     copyKey: "details.metalCopy" as const,
+    altKey: "details.metalVisualAlt" as const,
+    selectedKey: "details.metalSelected" as const,
     title: "Champagne Metal",
-    copy: "A satin anodized aluminum-alloy finish with a smooth, low-glare surface."
+    copy: "A satin anodized aluminum-alloy finish with a smooth, low-glare surface.",
+    image: ASSETS.productMainMetal,
+    alt: "Champagne-gold metal Acupressure Massage Stick on a warm neutral surface"
   }
 ];
 
@@ -328,36 +337,57 @@ export function renderPage(price: PriceOption, complete: boolean): string {
       </section>
 
       <section class="content-section section-shell details-layout" data-track-section="product_details">
-        <div class="details-visual reveal">
+        <figure class="details-visual reveal" data-material-preview>
           <img
-            src="${ASSETS.productDetail}"
-            width="640"
-            height="640"
+            src="${materialOptions[0].image}"
+            width="1549"
+            height="1015"
             loading="lazy"
-            alt="Champagne-gold metal massage stick beside a cream quick-start guide"
-            data-i18n-alt="details.visualAlt"
+            alt="${materialOptions[0].alt}"
+            data-i18n-alt="${materialOptions[0].altKey}"
+            data-material-preview-image
           />
-        </div>
+          <figcaption class="details-finish-label" data-material-preview-label data-i18n="details.woodTitle">
+            ${materialOptions[0].title}
+          </figcaption>
+        </figure>
         <div class="details-copy">
           <div class="section-heading reveal">
             <p class="eyebrow" data-i18n="details.eyebrow">Product information</p>
             <h2 data-i18n="details.title">Simple by design.</h2>
           </div>
-          <div class="material-options reveal" aria-label="Available material concepts" data-i18n-aria-label="details.materialsLabel">
+          <div
+            class="material-options reveal"
+            role="group"
+            aria-label="Choose a material to preview"
+            data-i18n-aria-label="details.materialsLabel"
+            data-material-selector
+          >
             ${materialOptions
               .map(
-                (option) => `
-                  <article class="material-option">
+                (option, index) => `
+                  <button
+                    class="material-option${index === 0 ? " is-selected" : ""}"
+                    type="button"
+                    data-material-option="${option.id}"
+                    data-material-image="${option.image}"
+                    data-material-alt-key="${option.altKey}"
+                    data-material-title-key="${option.titleKey}"
+                    data-material-selected-key="${option.selectedKey}"
+                    aria-pressed="${index === 0 ? "true" : "false"}"
+                  >
                     <span class="material-swatch ${option.className}" aria-hidden="true"></span>
-                    <div>
+                    <span class="material-option-copy">
                       <h3 data-i18n="${option.titleKey}">${option.title}</h3>
                       <p data-i18n="${option.copyKey}">${option.copy}</p>
-                    </div>
-                  </article>
+                    </span>
+                    <span class="material-option-check" aria-hidden="true">${icon("check")}</span>
+                  </button>
                 `
               )
               .join("")}
           </div>
+          <div class="sr-only" aria-live="polite" data-material-live></div>
           <dl class="detail-list reveal">
             ${details
               .map(
