@@ -116,6 +116,65 @@ if (carousel) {
   startCarousel();
 }
 
+const materialSelector = document.querySelector<HTMLElement>("[data-material-selector]");
+if (materialSelector) {
+  const materialButtons = Array.from(
+    materialSelector.querySelectorAll<HTMLButtonElement>("[data-material-option]")
+  );
+  const preview = document.querySelector<HTMLElement>("[data-material-preview]");
+  const previewImage = preview?.querySelector<HTMLImageElement>("[data-material-preview-image]");
+  const previewLabel = preview?.querySelector<HTMLElement>("[data-material-preview-label]");
+  const materialLive = document.querySelector<HTMLElement>("[data-material-live]");
+
+  const selectMaterial = (button: HTMLButtonElement, announce = false): void => {
+    const image = button.dataset.materialImage;
+    const altKey = button.dataset.materialAltKey as MessageKey | undefined;
+    const titleKey = button.dataset.materialTitleKey as MessageKey | undefined;
+    const selectedKey = button.dataset.materialSelectedKey as MessageKey | undefined;
+    if (!image || !altKey || !titleKey || !previewImage || !previewLabel) return;
+
+    materialButtons.forEach((option) => {
+      const isSelected = option === button;
+      option.classList.toggle("is-selected", isSelected);
+      option.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    preview?.classList.add("is-switching");
+    window.setTimeout(() => {
+      previewImage.src = image;
+      previewImage.dataset.i18nAlt = altKey;
+      previewImage.alt = t(altKey);
+      previewLabel.dataset.i18n = titleKey;
+      previewLabel.textContent = t(titleKey);
+      requestAnimationFrame(() => preview?.classList.remove("is-switching"));
+    }, 110);
+
+    if (announce && selectedKey && materialLive) materialLive.textContent = t(selectedKey);
+  };
+
+  materialButtons.forEach((button, index) => {
+    button.addEventListener("click", () => selectMaterial(button, true));
+    button.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) {
+        return;
+      }
+      event.preventDefault();
+      const nextIndex =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? materialButtons.length - 1
+            : (index + (event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1) +
+                materialButtons.length) %
+              materialButtons.length;
+      const nextButton = materialButtons[nextIndex];
+      if (!nextButton) return;
+      selectMaterial(nextButton, true);
+      nextButton.focus();
+    });
+  });
+}
+
 const pageViewKey = `meridianCare.tool.pageView.v1:${price.variant}`;
 if (!sessionStorage.getItem(pageViewKey)) {
   analytics.track("massage_tool_page_view");
