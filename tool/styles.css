@@ -762,6 +762,8 @@ a {
 }
 
 .details-visual {
+  position: relative;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--color-green-soft);
@@ -769,8 +771,31 @@ a {
 
 .details-visual img {
   width: 100%;
-  aspect-ratio: 1;
+  height: 100%;
   object-fit: cover;
+  transition:
+    opacity 220ms ease,
+    transform 300ms var(--ease-out);
+}
+
+.details-visual.is-switching img {
+  transform: scale(0.992);
+  opacity: 0;
+}
+
+.details-finish-label {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.9);
+  box-shadow: 0 8px 22px rgba(24, 53, 43, 0.12);
+  color: var(--color-green-deep);
+  font-size: 12px;
+  font-weight: 760;
+  backdrop-filter: blur(8px);
 }
 
 .material-options {
@@ -780,14 +805,46 @@ a {
 }
 
 .material-option {
+  position: relative;
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-columns: 42px minmax(0, 1fr) 22px;
   gap: 13px;
   align-items: center;
+  min-height: 82px;
   padding: 14px;
   border: 1px solid var(--color-line);
   border-radius: 14px;
   background: rgba(255, 253, 248, 0.66);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 120ms ease;
+}
+
+.material-option:hover {
+  border-color: rgba(51, 92, 73, 0.42);
+  background: rgba(255, 253, 248, 0.95);
+}
+
+.material-option:active {
+  transform: scale(0.985);
+}
+
+.material-option:focus-visible {
+  outline: 3px solid rgba(205, 118, 70, 0.34);
+  outline-offset: 3px;
+}
+
+.material-option.is-selected {
+  border-color: var(--color-green-mid);
+  background: #fffdf8;
+  box-shadow: 0 10px 28px rgba(24, 53, 43, 0.1);
 }
 
 .material-option h3 {
@@ -801,6 +858,41 @@ a {
   color: var(--color-ink-soft);
   font-size: 12px;
   line-height: 1.5;
+}
+
+.material-option-copy {
+  display: block;
+  min-width: 0;
+}
+
+.material-option-check {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  transform: scale(0.7);
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-green-mid);
+  color: white;
+  opacity: 0;
+  transition:
+    transform 180ms var(--ease-out),
+    opacity 140ms ease;
+}
+
+.material-option-check svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.material-option.is-selected .material-option-check {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .material-swatch {
